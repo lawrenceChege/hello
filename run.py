@@ -1,14 +1,16 @@
-from flask import Flask
-from flask_restful import Resource, Api
+"""
+This module runs the app and tests
+"""
+import os
+from app import create_app
+from migrations import DbModel
+config = os.getenv('FLASK_CONFIG')
 
-app = Flask(__name__)
-api = Api(app)
 
-class HelloWorld(Resource):
-    def get(self):
-        return {'hello': 'world'}
+APP = create_app("default")
+with APP.app_context():
+        db = DbModel()
+        db.init_db(APP)
 
-api.add_resource(HelloWorld, '/')
-
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    APP.run(debug = True)

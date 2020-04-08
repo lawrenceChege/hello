@@ -10,6 +10,9 @@ pylint = "*"
 flask = "*"
 flask-restful = "*"
 gunicorn = "*"
+flask-jwt-extended = "*"
+flask-cors = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"
